@@ -3,4 +3,5 @@
   background-color: black;
   width: 7.25rem;
   flex-grow: 0;
+  flex-shrink: 0;
 }
