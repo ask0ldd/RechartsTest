@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react"
-import { LineChart,ResponsiveContainer } from "recharts"
+import { LineChart, ResponsiveContainer, Line, XAxis } from "recharts"
+import "../styles/AvgSession.css"
 
 interface props {
     userId : number
 }
 
-interface session {
-    day:number
-    SessionLength:number
-}
-
 const AvgSession = ({userId}:props) => {
+
+    interface session {
+        day:number
+        SessionLength:number
+    }
+
+    const formatXTicks = (value : number) => {
+        const week = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+        return week[value-1]
+    }
 
     const baseUrl : string = "http://localhost:3000/user/"+userId+"/average-sessions" // 12 or 18
 
@@ -39,7 +45,16 @@ const AvgSession = ({userId}:props) => {
         <ResponsiveContainer width="33%" height={260}>
             <LineChart
             data={sessionsDatas}
-            />
+            >
+                <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" />
+                <XAxis 
+                dataKey="day"
+                tickLine={false}
+                axisLine={false}
+                /*ticks={['L', 'M', 'M', 'J', 'V', 'S', 'D']}*/
+                tickFormatter={formatXTicks}
+                />
+            </LineChart>
         </ResponsiveContainer>
     )
 }

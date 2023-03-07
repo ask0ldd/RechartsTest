@@ -18,6 +18,8 @@ function App() {
               <Greetings/>
               <GraphActivity userId={12}/>
               <AvgSession userId={12}/>
+              <AvgSession userId={12}/>
+              <AvgSession userId={12}/>
             </div>
           </div>
         </section>

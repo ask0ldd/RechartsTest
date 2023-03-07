@@ -16,8 +16,8 @@ const resizedLegendValue = (value: string, entry: any) => {
     return <span style={{fontSize:"14px", color:"#74798C"}}>{value}</span>
 }
 
-const CustomYAxisTick = (value : any, index:number) : string => {
-    return (Number(value)+1).toString()
+const CustomYAxisTick = (value : number, index:number) : string => {
+    return (value+1).toString()
 }
 
 const GraphActivity = ({userId}:props) => {
