@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { LineChart, ResponsiveContainer, Line, XAxis, YAxis, Tooltip, Legend } from "recharts"
-import "../styles/AvgSession.css"
+import "../styles/AvgSessionChart.css"
 
 interface props {
     userId : number
@@ -82,4 +82,4 @@ const AvgSessionChart = ({userId}:props) => {
     )
 }
 
-export default AvgSession
+export default AvgSessionChart

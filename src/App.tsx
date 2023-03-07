@@ -4,6 +4,7 @@ import GraphActivity from './components/GraphActivity'
 import Header from './components/Header'
 import Greetings from './components/Greetings'
 import AvgSessionChart from './components/AvgSessionChart'
+import PolarChart from './components/PolarChart'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
               <Greetings/>
               <GraphActivity userId={12}/>
               <AvgSessionChart userId={12}/>
-              <AvgSessionChart userId={12}/>
+              <PolarChart userId={12}/>
               <AvgSessionChart userId={12}/>
             </div>
           </div>
