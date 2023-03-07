@@ -50,7 +50,7 @@ const AvgSessionChart = ({userId}:props) => {
                 <Line 
                 type='natural' 
                 dataKey="sessionLength" 
-                stroke="#FF8484"
+                stroke="#FF8484" /* linear */
                 strokeWidth={2}
                 dot={false}
                 />
@@ -68,7 +68,7 @@ const AvgSessionChart = ({userId}:props) => {
                 />
                 <Tooltip
                 wrapperStyle={{outline:'none', border:'none'}}
-                itemStyle={{color:'#000', fontSize:'8px'}}
+                itemStyle={{color:'#000', fontSize:'10px'}}
                 labelStyle={{color:'#000',display:'none'}}
                 />
                 <Legend
@@ -83,3 +83,29 @@ const AvgSessionChart = ({userId}:props) => {
 }
 
 export default AvgSessionChart
+
+/*
+
+                <Line 
+                type='natural' 
+                dataKey="sessionLength" 
+                stroke="#FF8484"
+                strokeWidth={2}
+                dot={false}
+                />
+
+
+                <defs>
+                    <linearGradient
+                        id="linear"
+                        x1="0"
+                        y1="0"
+                        x2="100"
+                        y2="100"
+                    >
+                        <stop offset="0%" stopColor="#FFF" />
+                        <stop offset="100%" stopColor="#000" />
+                    </linearGradient>
+                </defs>
+
+                */

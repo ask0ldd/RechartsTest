@@ -10,7 +10,15 @@ const PolarChart = ({userId} : props) => {
 
     interface performance {
         value:number
-        kind:number
+        kind:any
+    }
+
+    const rotateArrayRight = (array : Array <performance>) : Array <performance> => {
+
+        const lastItem : performance = array[array.length-1]
+        array.pop()
+        array.unshift(lastItem)
+        return array
     }
 
     const baseUrl : string = "http://localhost:3000/user/"+userId+"/performance" // 12 or 18
@@ -23,12 +31,13 @@ const PolarChart = ({userId} : props) => {
             try{
                 const response = await fetch(baseUrl)
                 const datas = await response.json()
-                /*const sessions : Array <session> = datas.data.sessions
-                const sDatas : string = JSON.stringify(sessions)*/
                 console.log('perfs:',JSON.stringify(datas.data.data))
-                /*console.log(JSON.stringify(Object.values(datas.data.kind)))*/
-                setPerformancesDatas(datas.data.data)
-                /*setPerformancesAxisValues(Object.values(datas.data.kind))*/
+                const perfDataswTextualKinds : Array <performance> = datas.data.data.map((data: performance) : performance => { 
+                    data.kind = datas.data.kind[data.kind]
+                    return data
+                }) /* remplace les ticks id par des ticks textuels 1 > cardio ; 2 > energy ; etc... */
+                console.log('perfstext:', perfDataswTextualKinds)
+                setPerformancesDatas(rotateArrayRight(perfDataswTextualKinds)) /* !!! TODO ticks name needs to be reversed */
             }
             catch(error){
                 console.log(error)
@@ -41,9 +50,14 @@ const PolarChart = ({userId} : props) => {
 
     return(
         <ResponsiveContainer width="30%" height={260} className="polarChartContainer">
-            <RadarChart outerRadius="80%" data={performancesDatas}>
+            <RadarChart outerRadius="70%" data={performancesDatas}>
                 <PolarGrid/>
-                <PolarAngleAxis dataKey="kind" axisLine={false} tickLine={false} allowDuplicatedCategory={false}/>
+                <PolarAngleAxis 
+                dataKey="kind" 
+                axisLine={false} 
+                tickLine={false} 
+                tick={{ fontSize: '10px' }}
+                allowDuplicatedCategory={false}/>
                 <Radar dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
             </RadarChart>
         </ResponsiveContainer>

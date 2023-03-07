@@ -98,7 +98,7 @@ const GraphActivity = ({userId}:props) => {
                     />
                     <Tooltip
                     viewBox={{ x: 0, y: 0, width: 40, height: 65 }}
-                    itemStyle={{fontSize:7, color:"#fff"}}
+                    itemStyle={{fontSize:10, color:"#fff"}}
                     contentStyle={{backgroundColor:"#E60000", outline:"none", border:"none", display:"flex", flexDirection:"column"}}
                     wrapperStyle={{outline:"none", border:"none"}}
                     labelStyle={{color:'#000',display:'none'}}
