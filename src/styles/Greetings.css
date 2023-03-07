@@ -1,0 +1,15 @@
+.greetingsContainer {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.hello {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.congrats {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 1.25rem;
+}
