@@ -37,7 +37,7 @@ const PolarChart = ({userId} : props) => {
                     return data
                 }) /* remplace les ticks id par des ticks textuels 1 > cardio ; 2 > energy ; etc... */
                 console.log('perfstext:', perfDataswTextualKinds)
-                setPerformancesDatas(rotateArrayRight(perfDataswTextualKinds)) /* !!! TODO ticks name needs to be reversed */
+                setPerformancesDatas(perfDataswTextualKinds.reverse()) /* ticks name needed to be reversed */
             }
             catch(error){
                 console.log(error)

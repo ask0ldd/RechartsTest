@@ -18,6 +18,13 @@ const AvgSessionChart = ({userId}:props) => {
         return week[value-1]
     }
 
+    
+    const CustomTooltip = ({payload} : any) => {
+        if (payload && payload.length) {
+            return (<div style={{backgroundColor:'#fff', color:'#000000', fontSize:'10px', padding:'4px 8px'}}>{payload[0].value} min</div>)
+        }
+    }
+
     const baseUrl : string = "http://localhost:3000/user/"+userId+"/average-sessions" // 12 or 18
 
     const [sessionsDatas, setSessionsDatas] = useState<Array <session>>()
@@ -40,6 +47,8 @@ const AvgSessionChart = ({userId}:props) => {
         fetchData()
 
     }, [baseUrl])
+
+    const TooltipPayload = [{ name: '05-01', value: 12, unit: 'kg' }]
 
     return(
         <ResponsiveContainer width="30%" height={260} className="sessionLineChartsContainer">
@@ -70,12 +79,14 @@ const AvgSessionChart = ({userId}:props) => {
                 wrapperStyle={{outline:'none', border:'none'}}
                 itemStyle={{color:'#000', fontSize:'10px'}}
                 labelStyle={{color:'#000',display:'none'}}
+                content={CustomTooltip}
                 />
                 <Legend
                 verticalAlign="top"
                 align="left"
-                wrapperStyle={{top:20, left:18}}
+                wrapperStyle={{top:20, left:18, color:"#FF8484"}}
                 iconSize={0}
+                payload={[{ value: 'Durée moyenne des sessions'}]}
                 />
             </LineChart>
         </ResponsiveContainer>
