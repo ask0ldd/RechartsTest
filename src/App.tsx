@@ -11,8 +11,9 @@ function App() {
       <main>
         <section>
           <ActivitiesMenu/>
-          <GraphActivity userId={12}/>
-
+          <div className='graphSubSection'>
+            <GraphActivity userId={12}/>
+          </div>
         </section>
       </main>
     </div>
