@@ -55,7 +55,7 @@ const GraphActivity = ({userId}:props) => {
             width={835}
             height={240}
             data={activitiesDatas}
-            barCategoryGap={60}
+            barCategoryGap='10%'
             barGap={8}
             margin={{top: 48, bottom: 0, left:0, right:0}}
             >
