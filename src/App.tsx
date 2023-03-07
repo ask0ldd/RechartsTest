@@ -3,23 +3,21 @@ import ActivitiesMenu from './components/ActivitiesMenu'
 import GraphActivity from './components/GraphActivity'
 import Header from './components/Header'
 import Greetings from './components/Greetings'
-import AvgSession from './components/AvgSession'
+import AvgSessionChart from './components/AvgSessionChart'
 
 function App() {
 
   return (
     <div className="App">
-      <Header/>
       <main>
         <section>
-          <ActivitiesMenu/>
           <div className='graphsSubSection'>
             <div className='textnGraphsContainer'>
               <Greetings/>
               <GraphActivity userId={12}/>
-              <AvgSession userId={12}/>
-              <AvgSession userId={12}/>
-              <AvgSession userId={12}/>
+              <AvgSessionChart userId={12}/>
+              <AvgSessionChart userId={12}/>
+              <AvgSessionChart userId={12}/>
             </div>
           </div>
         </section>

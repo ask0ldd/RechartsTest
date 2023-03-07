@@ -101,6 +101,7 @@ const GraphActivity = ({userId}:props) => {
                     itemStyle={{fontSize:7, color:"#fff"}}
                     contentStyle={{backgroundColor:"#E60000", outline:"none", border:"none", display:"flex", flexDirection:"column"}}
                     wrapperStyle={{outline:"none", border:"none"}}
+                    labelStyle={{color:'#000',display:'none'}}
                     />
                     <Legend 
                     align="right"

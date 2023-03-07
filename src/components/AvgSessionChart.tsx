@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { LineChart, ResponsiveContainer, Line, XAxis } from "recharts"
+import { LineChart, ResponsiveContainer, Line, XAxis, YAxis, Tooltip, Legend } from "recharts"
 import "../styles/AvgSession.css"
 
 interface props {
     userId : number
 }
 
-const AvgSession = ({userId}:props) => {
+const AvgSessionChart = ({userId}:props) => {
 
     interface session {
         day:number
@@ -42,17 +42,40 @@ const AvgSession = ({userId}:props) => {
     }, [baseUrl])
 
     return(
-        <ResponsiveContainer width="33%" height={260}>
+        <ResponsiveContainer width="30%" height={260} className="sessionLineChartsContainer">
             <LineChart
             data={sessionsDatas}
+            margin={{ top: 16, right: 24, bottom: 16, left: 24 }}
             >
-                <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" />
+                <Line 
+                type='natural' 
+                dataKey="sessionLength" 
+                stroke="#FF8484"
+                strokeWidth={2}
+                dot={false}
+                />
                 <XAxis 
                 dataKey="day"
                 tickLine={false}
                 axisLine={false}
                 /*ticks={['L', 'M', 'M', 'J', 'V', 'S', 'D']}*/
                 tickFormatter={formatXTicks}
+                tick={{ fill: '#FF8484' }}
+                />
+                <YAxis
+                hide={true}
+                domain={['dataMin-30', 'dataMax+30']}
+                />
+                <Tooltip
+                wrapperStyle={{outline:'none', border:'none'}}
+                itemStyle={{color:'#000', fontSize:'8px'}}
+                labelStyle={{color:'#000',display:'none'}}
+                />
+                <Legend
+                verticalAlign="top"
+                align="left"
+                wrapperStyle={{top:20, left:18}}
+                iconSize={0}
                 />
             </LineChart>
         </ResponsiveContainer>

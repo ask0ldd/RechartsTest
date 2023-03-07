@@ -6,24 +6,24 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100vh;
 }
 
 main {
   width: 100%;
-  height: 100%;
   background-color: #fff;
 }
 
 section {
   width: 100%;
-  height: 100%;
   display: flex;
   color: black;
+  flex-direction: row;
 }
 
 .graphsSubSection {
   padding: 68px 106px;
+  flex-grow: 0;
+  flex-shrink: 1;
 }
 
 .textnGraphsContainer {

@@ -4,7 +4,7 @@ const ActivitiesMenu = () => {
 
     return(
         <nav className='nav-activities'>
-
+            aaa
         </nav>
     )
 
