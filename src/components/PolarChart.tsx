@@ -50,13 +50,19 @@ const PolarChart = ({userId} : props) => {
 
     return(
         <ResponsiveContainer width="30%" height={260} className="polarChartContainer">
-            <RadarChart outerRadius="70%" data={performancesDatas}>
-                <PolarGrid/>
+            <RadarChart outerRadius="80%" data={performancesDatas}>
+                <PolarGrid
+                />
+                <PolarRadiusAxis
+                tickCount={6}
+                tick={false}
+                axisLine={false} 
+                />
                 <PolarAngleAxis 
                 dataKey="kind" 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fontSize: '10px' }}
+                tick={{ fontSize: '10px', fill:'#FFFFFF' }}
                 allowDuplicatedCategory={false}/>
                 <Radar dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
             </RadarChart>
