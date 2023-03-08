@@ -48,15 +48,32 @@ const AvgSessionChart = ({userId}:props) => {
 
     }, [baseUrl])
 
-    const TooltipPayload = [{ name: '05-01', value: 12, unit: 'kg' }]
+    //const TooltipPayload = [{ name: '05-01', value: 12, unit: 'kg' }]
+
+    const onMouseMove = (hoveredData : any) => { // any > needs better typing
+        if (hoveredData && hoveredData.activePayload && sessionsDatas && sessionsDatas?.length > 0) {
+            const hoveredX = hoveredData.activePayload[0].payload.day
+            const index = sessionsDatas?.findIndex(d => d.day === hoveredX)
+            const postTooltipBG = document.querySelector('#postTooltipBG')
+            postTooltipBG?.setAttribute("x", index*(100/7) + 9 + "%")
+            postTooltipBG?.setAttribute("width", 100 - (index*(100/7) + 9) + "%") /* NEEDS TO BE RESPONSIVE */
+        }
+    }
+
+    const onMouseOut = () => {
+        const postTooltipBG = document.querySelector('#postTooltipBG')
+        postTooltipBG?.setAttribute("width", "0%")
+    }
 
     if(sessionsDatas && sessionsDatas?.length>0) return(
         <ResponsiveContainer width="30%" height={260} className="sessionLineChartsContainer">
             <LineChart
             data={sessionsDatas}
             margin={{ top: 16, right: 24, bottom: 16, left: 24 }}
+            onMouseMove={onMouseMove}
+            onMouseLeave={onMouseOut}
             >
-                <rect id="afterSelectedValueBG" x="9%" width="14%" height="100%" opacity="0.2" /* red dark bg after selected point */
+                <rect id="postTooltipBG" x="9%" width="14%" height="100%" opacity="0.2" /* DARK BG AFTER TOOLTIP */
                 />
                 <Line 
                 type='natural' 

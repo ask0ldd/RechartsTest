@@ -58,8 +58,8 @@ const GraphActivity = ({userId}:props) => {
                 barGap={8}
                 margin={{top: 48, bottom: 0, left:0, right:0}}
                 >
-                    <text x={12} y={16} fill="black" textAnchor="middle" dominantBaseline="central">
-                        <tspan x="12" dy="0" fontSize="14">Title</tspan>
+                    <text x={12} y={14} fill="black" textAnchor="middle" dominantBaseline="central">
+                        <tspan x="62" dy="0" fontSize="14">Activité quotidienne</tspan>
                         <tspan x="12" dy="1.4em" fontSize="14">Title</tspan>
                     </text>
                     <CartesianGrid 
