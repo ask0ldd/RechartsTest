@@ -48,15 +48,19 @@ const PolarChart = ({userId} : props) => {
 
     }, [baseUrl])
 
+    /* pb avec height fixed */
     return(
-        <ResponsiveContainer width="30%" height={260} className="polarChartContainer">
-            <RadarChart outerRadius="80%" data={performancesDatas}>
+        <ResponsiveContainer width="30%" height={260} className="polarChartContainer"> 
+            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={performancesDatas}>
                 <PolarGrid
+                radialLines={false} // attribute d: Expected moveto path command ('M' or 'm'), "Z". SVG Attributes
+                // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
                 />
                 <PolarRadiusAxis
                 tickCount={6}
                 tick={false}
                 axisLine={false} 
+                tickLine={false}
                 />
                 <PolarAngleAxis 
                 dataKey="kind" 
@@ -71,3 +75,29 @@ const PolarChart = ({userId} : props) => {
 }
 
 export default PolarChart
+
+/*
+
+        <ResponsiveContainer width="30%" height={260} className="polarChartContainer">
+            <RadarChart outerRadius="80%" data={performancesDatas}>
+                <PolarGrid
+                innerRadius={0}
+                outerRadius={300}
+                />
+                <PolarRadiusAxis
+                tickCount={6}
+                tick={false}
+                axisLine={false} 
+                tickLine={false}
+                />
+                <PolarAngleAxis 
+                dataKey="kind" 
+                axisLine={false} 
+                tickLine={false} 
+                tick={{ fontSize: '10px', fill:'#FFFFFF' }}
+                allowDuplicatedCategory={false}/>
+                <Radar dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
+            </RadarChart>
+        </ResponsiveContainer>
+
+*/

@@ -36,7 +36,7 @@ const AvgSessionChart = ({userId}:props) => {
                 const datas = await response.json()
                 /*const sessions : Array <session> = datas.data.sessions
                 const sDatas : string = JSON.stringify(sessions)*/
-                console.log(JSON.stringify(datas.data.sessions))
+                //console.log(JSON.stringify(datas.data.sessions))
                 setSessionsDatas(datas.data.sessions)
             }
             catch(error){

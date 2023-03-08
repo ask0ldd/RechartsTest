@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label, Text } from 'recharts';
 import '../styles/GraphActivity.css'
 
 interface props {
@@ -35,7 +35,7 @@ const GraphActivity = ({userId}:props) => {
                 const datas = await response.json()
                 /*const sessions : Array <session> = datas.data.sessions
                 const sDatas : string = JSON.stringify(sessions)*/
-                console.log(JSON.stringify(datas.data.sessions))
+                //console.log(JSON.stringify(datas.data.sessions))
                 setActivitiesDatas(datas.data.sessions)
             }
             catch(error){
@@ -58,6 +58,9 @@ const GraphActivity = ({userId}:props) => {
                 barGap={8}
                 margin={{top: 48, bottom: 0, left:0, right:0}}
                 >
+                    <text x={12} y={16} fill="black" textAnchor="middle" dominantBaseline="central">
+                        <tspan fontSize="14">Title</tspan>
+                    </text>
                     <CartesianGrid 
                     strokeDasharray="3 3"
                     vertical={false}
@@ -84,7 +87,7 @@ const GraphActivity = ({userId}:props) => {
                     /*ticks={[69,70,71]}*/
                     tickCount={3}
                     tick={{ fill: '#9B9EAC' }}
-                    />
+                    />   
                     <YAxis 
                     hide={true}
                     dataKey="calories" 
@@ -112,7 +115,7 @@ const GraphActivity = ({userId}:props) => {
                     formatter={resizedLegendValue}
                     verticalAlign="top"
                     wrapperStyle={{top:0, right:24}}
-                    />
+                    />                       
                     <Bar 
                     dataKey="kilogram" 
                     fill="#282D30"
@@ -136,3 +139,9 @@ const GraphActivity = ({userId}:props) => {
 }
 
 export default GraphActivity
+
+/*
+
+<Label stroke="#DEDEDE" value="Pages of my website" offset={0} position="insideTopLeft" />
+
+                    */
