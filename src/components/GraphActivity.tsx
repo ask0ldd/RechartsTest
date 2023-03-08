@@ -59,7 +59,8 @@ const GraphActivity = ({userId}:props) => {
                 margin={{top: 48, bottom: 0, left:0, right:0}}
                 >
                     <text x={12} y={16} fill="black" textAnchor="middle" dominantBaseline="central">
-                        <tspan fontSize="14">Title</tspan>
+                        <tspan x="12" dy="0" fontSize="14">Title</tspan>
+                        <tspan x="12" dy="1.4em" fontSize="14">Title</tspan>
                     </text>
                     <CartesianGrid 
                     strokeDasharray="3 3"
@@ -74,18 +75,18 @@ const GraphActivity = ({userId}:props) => {
                     stroke="#DEDEDE"
                     tickFormatter={CustomYAxisTick}
                     />
-                    <YAxis 
+                    <YAxis /* 2 Y axis to scale both bars in a different way */
                     hide={false}
                     dataKey="kilogram" 
                     tickLine={false}
                     axisLine={false}
                     orientation="right"
                     type="number"
-                    domain={['dataMin-1', 'dataMax+0']}
+                    domain={['dataMin-1', 'dataMax']}
                     yAxisId={0}
                     allowDecimals={false}
                     /*ticks={[69,70,71]}*/
-                    tickCount={3}
+                    tickCount={3} /* 3 values on Y weight axis */
                     tick={{ fill: '#9B9EAC' }}
                     />   
                     <YAxis 
@@ -119,16 +120,15 @@ const GraphActivity = ({userId}:props) => {
                     <Bar 
                     dataKey="kilogram" 
                     fill="#282D30"
-                    barSize={7}
-                    yAxisId={0}
+                    barSize={7} /* width */
+                    yAxisId={0} /* 2 Y axis to scale both bars in a different way */
                     radius={[25, 25, 0, 0]}
-                    minPointSize={6}
                     />
                     <Bar 
                     dataKey="calories" 
                     fill="#E60000" 
                     barSize={7}
-                    yAxisId={1}
+                    yAxisId={1} /* 2 Y axis to scale both bars in a different way */
                     radius={[25, 25, 0, 0]}
                     />
                 </BarChart>

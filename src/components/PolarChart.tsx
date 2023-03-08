@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend} from "recharts"
+import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, Tooltip} from "recharts"
 import "../styles/PolarChart.css"
 
 interface props {
@@ -69,6 +69,12 @@ const PolarChart = ({userId} : props) => {
                 tick={{ fontSize: '10px', fill:'#FFFFFF' }}
                 allowDuplicatedCategory={false}/>
                 <Radar dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
+                <Tooltip
+                wrapperStyle={{outline:'none', border:'none'}}
+                itemStyle={{color:'#000', fontSize:'10px'}}
+                labelStyle={{color:'#000',display:'none'}}
+                cursor={false}
+                />
             </RadarChart>
         </ResponsiveContainer>
     )

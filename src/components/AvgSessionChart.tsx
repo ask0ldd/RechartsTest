@@ -50,12 +50,14 @@ const AvgSessionChart = ({userId}:props) => {
 
     const TooltipPayload = [{ name: '05-01', value: 12, unit: 'kg' }]
 
-    return(
+    if(sessionsDatas && sessionsDatas?.length>0) return(
         <ResponsiveContainer width="30%" height={260} className="sessionLineChartsContainer">
             <LineChart
             data={sessionsDatas}
             margin={{ top: 16, right: 24, bottom: 16, left: 24 }}
             >
+                <rect id="afterSelectedValueBG" x="9%" width="14%" height="100%" opacity="0.2" /* red dark bg after selected point */
+                />
                 <Line 
                 type='natural' 
                 dataKey="sessionLength" 
@@ -91,32 +93,8 @@ const AvgSessionChart = ({userId}:props) => {
             </LineChart>
         </ResponsiveContainer>
     )
+
+    return(<></>) // do some error div to replace the chart that can't be displayed
 }
 
 export default AvgSessionChart
-
-/*
-
-                <Line 
-                type='natural' 
-                dataKey="sessionLength" 
-                stroke="#FF8484"
-                strokeWidth={2}
-                dot={false}
-                />
-
-
-                <defs>
-                    <linearGradient
-                        id="linear"
-                        x1="0"
-                        y1="0"
-                        x2="100"
-                        y2="100"
-                    >
-                        <stop offset="0%" stopColor="#FFF" />
-                        <stop offset="100%" stopColor="#000" />
-                    </linearGradient>
-                </defs>
-
-                */
