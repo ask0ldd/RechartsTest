@@ -78,7 +78,7 @@ const AvgSessionChart = ({userId}:props) => {
                 <Line 
                 type='natural' 
                 dataKey="sessionLength" 
-                stroke="#FF8484" /* linear */
+                stroke="#FF8484" /* TODO LINEAR GRADIEN INSTEAD */
                 strokeWidth={2}
                 dot={false}
                 />
