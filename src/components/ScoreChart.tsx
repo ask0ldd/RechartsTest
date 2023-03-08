@@ -8,6 +8,9 @@ const ScoreChart = ({score} : any) => {
         <ResponsiveContainer width="30%" height={260} className="ScoreChartContainer"> 
             <PieChart
             >
+                <text x={12} y={14} fill="black" textAnchor="middle" dominantBaseline="central">
+                        <tspan x="62" y="28" fontSize="15">Score</tspan>
+                </text>
                 <Pie 
                 data={score} 
                 dataKey="score" 
@@ -18,8 +21,8 @@ const ScoreChart = ({score} : any) => {
                 startAngle={90}
                 endAngle={90+360}
                 >
-                    <Cell/>
-                    <Cell fill='none'/>
+                    <Cell />
+                    <Cell opacity='0'/>
                 </Pie>
                 <text x={0} y={0} fill="black" textAnchor="middle" dominantBaseline="central">
                     <tspan x="50%" y="42%" fontSize="26" fontWeight={600}>{score[0].score*100}%</tspan>

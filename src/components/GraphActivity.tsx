@@ -47,6 +47,18 @@ const GraphActivity = ({userId}:props) => {
 
     }, [baseUrl])
 
+    const CustomTooltip = ({payload} : any) => {
+        if(payload && payload.length){
+            return(
+                <div className="graphActivity-tooltip">
+                    <p>{payload[0].value+'Kg'}</p>
+                    <p>{payload[1].value+'KCal'}</p>
+                </div>
+            )
+        }
+
+    }
+
     return(
         <article className="graphActivity-container">
             <ResponsiveContainer width="100%" height="100%">
@@ -60,7 +72,6 @@ const GraphActivity = ({userId}:props) => {
                 >
                     <text x={12} y={14} fill="black" textAnchor="middle" dominantBaseline="central">
                         <tspan x="62" dy="0" fontSize="14">Activité quotidienne</tspan>
-                        <tspan x="12" dy="1.4em" fontSize="14">Title</tspan>
                     </text>
                     <CartesianGrid 
                     strokeDasharray="3 3"
@@ -102,10 +113,11 @@ const GraphActivity = ({userId}:props) => {
                     />
                     <Tooltip
                     viewBox={{ x: 0, y: 0, width: 40, height: 65 }}
-                    itemStyle={{fontSize:10, color:"#fff"}}
+                    /*itemStyle={{fontSize:10, color:"#fff"}}
                     contentStyle={{backgroundColor:"#E60000", outline:"none", border:"none", display:"flex", flexDirection:"column"}}
-                    wrapperStyle={{outline:"none", border:"none"}}
-                    labelStyle={{color:'#000',display:'none'}}
+                    labelStyle={{color:'#000',display:'none'}}*/
+                    wrapperStyle={{backgroundColor:"#E60000", outline:"none", border:"none"}}
+                    content={CustomTooltip}
                     />
                     <Legend 
                     align="right"

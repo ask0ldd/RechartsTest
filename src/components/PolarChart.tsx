@@ -51,9 +51,9 @@ const PolarChart = ({userId} : props) => {
     /* pb avec height fixed */
     return(
         <ResponsiveContainer width="30%" height={260} className="polarChartContainer"> 
-            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={performancesDatas}>
+            <RadarChart cx="50%" cy="50%" innerRadius="0%" outerRadius="80%" data={performancesDatas}>
                 <PolarGrid
-                radialLines={false} // attribute d: Expected moveto path command ('M' or 'm'), "Z". SVG Attributes
+                radialLines={false} // ERROR : attribute d: Expected moveto path command ('M' or 'm'), "Z". SVG Attributes
                 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
                 />
                 <PolarRadiusAxis
