@@ -6,7 +6,7 @@ const ScoreChart = ({score} : any) => {
     /* if score exist only sinon error message */
     return(
         <ResponsiveContainer width="30%" height={260} className="ScoreChartContainer"> 
-            <PieChart
+            <PieChart /* TODO ! TRANSFORMER EN RADIALBARCHART */
             >
                 <text x={12} y={14} fill="black" textAnchor="middle" dominantBaseline="central">
                         <tspan x="62" y="28" fontSize="15">Score</tspan>
