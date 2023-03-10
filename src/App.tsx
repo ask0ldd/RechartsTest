@@ -12,11 +12,11 @@ import {User, keyData, UserInterface} from './models/user'
 
 function App() {
 
-  const userId : number = 12
+  const userId : number = 18 /* gerer invalid ID */
 
   const baseUrl : string = "http://localhost:3000/user/"+userId // 12 or 18
 
-  const [userDatas, setUserDatas] = useState<Array <UserInterface>>()
+  const [userDatas, setUserDatas] : [any, any] = useState<Array <UserInterface>>() /* find how to replace first any by class User */
 
   useEffect(() => {
       const fetchData = async () =>  {
@@ -41,11 +41,11 @@ function App() {
         <section>
           <div className='graphsSubSection'>
             <div className='textnGraphsContainer'>
-              <Greetings firstname={userDatas.firstname}/>
+              <Greetings firstname={userDatas?.firstname ? userDatas.firstname : 'N/A'}/>
               <GraphActivity userId={userId}/>
               <AvgSessionChart userId={userId}/>
               <PolarChart userId={userId}/>
-              <ScoreChart score={[{score:0.12},{score:0.88}]}/> {/*datas todayscore key for 12 but score for 18*/}
+              <ScoreChart score={userDatas?.score ? [{score:userDatas.score},{score:1-userDatas.score}] : [{score:0},{score:1}]}/> {/*datas todayscore key for 12 but score for 18*/}
             </div>
           </div>
         </section>

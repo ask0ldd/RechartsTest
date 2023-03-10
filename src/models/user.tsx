@@ -6,8 +6,8 @@ export interface keyData{
 }
 
 interface userInfos{
-    firstname : string
-    lastname : string
+    firstName : string
+    lastName : string
     age : number
 }
 
@@ -25,18 +25,19 @@ export class User {
     #lastname : string
     #age : number
     #keyData : keyData
-    #score : number
+    #score : number | undefined
 
-    constructor (userDatas : any){
+    constructor (userDatas : UserInterface){
         this.#id = userDatas?.id
-        this.#firstname = userDatas?.userInfos?.firstname
-        this.#lastname = userDatas?.userInfos?.lastname
+        this.#firstname = userDatas?.userInfos?.firstName
+        this.#lastname = userDatas?.userInfos?.lastName
         this.#age = userDatas?.userInfos?.age
         this.#keyData = userDatas?.keyData
         this.#score = userDatas?.score || userDatas?.todayScore /* score / today score issue */
     }
 
     get firstname(){
+        console.log(this.#firstname)
         return this.#firstname || 'Unknown User'
     }
 
