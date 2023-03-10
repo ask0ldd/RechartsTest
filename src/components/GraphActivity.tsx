@@ -20,6 +20,18 @@ const CustomYAxisTick = (value : number, index:number) : string => {
     return (value+1).toString()
 }
 
+const CustomTooltip = ({payload} : any) => {
+    if(payload && payload.length){
+        return(
+            <div className="graphActivity-tooltip">
+                <p>{payload[0].value+'Kg'}</p>
+                <p>{payload[1].value+'KCal'}</p>
+            </div>
+        )
+    }
+
+}
+
 const GraphActivity = ({userId}:props) => {
 
     /* url : http://localhost:3000/user/${userId}/activity */
@@ -46,18 +58,6 @@ const GraphActivity = ({userId}:props) => {
         fetchData()
 
     }, [baseUrl])
-
-    const CustomTooltip = ({payload} : any) => {
-        if(payload && payload.length){
-            return(
-                <div className="graphActivity-tooltip">
-                    <p>{payload[0].value+'Kg'}</p>
-                    <p>{payload[1].value+'KCal'}</p>
-                </div>
-            )
-        }
-
-    }
 
     return(
         <article className="graphActivity-container">

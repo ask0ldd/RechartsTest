@@ -1,9 +1,13 @@
 import '../styles/Greetings.css'
 
-const Greetings = () => {
+interface props {
+    firstname : string
+}
+
+const Greetings = ({firstname}:props) => {
     return(
         <div className="greetingsContainer">
-            <p className='hello'>Bonjour !!!TODO</p>
+            <p className='hello'>Bonjour {firstname}</p>
             <p className='congrats'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
     )

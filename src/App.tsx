@@ -6,8 +6,34 @@ import Greetings from './components/Greetings'
 import AvgSessionChart from './components/AvgSessionChart'
 import PolarChart from './components/PolarChart'
 import ScoreChart from './components/ScoreChart'
+import { useState, useEffect } from 'react'
+import {User, keyData, UserInterface} from './models/user'
+
 
 function App() {
+
+  const userId : number = 12
+
+  const baseUrl : string = "http://localhost:3000/user/"+userId // 12 or 18
+
+  const [userDatas, setUserDatas] = useState<Array <UserInterface>>()
+
+  useEffect(() => {
+      const fetchData = async () =>  {
+          try{
+              const response = await fetch(baseUrl)
+              const datas = await response.json()
+              console.log(datas.data)
+              setUserDatas(new User(datas.data))
+          }
+          catch(error){
+              console.log(error)
+          }
+      }
+
+      fetchData()
+
+  }, [baseUrl])
 
   return (
     <div className="App">
@@ -15,10 +41,10 @@ function App() {
         <section>
           <div className='graphsSubSection'>
             <div className='textnGraphsContainer'>
-              <Greetings/>
-              <GraphActivity userId={12}/>
-              <AvgSessionChart userId={12}/>
-              <PolarChart userId={12}/>
+              <Greetings firstname={userDatas.firstname}/>
+              <GraphActivity userId={userId}/>
+              <AvgSessionChart userId={userId}/>
+              <PolarChart userId={userId}/>
               <ScoreChart score={[{score:0.12},{score:0.88}]}/> {/*datas todayscore key for 12 but score for 18*/}
             </div>
           </div>
