@@ -3,7 +3,7 @@ import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadius
 import "../styles/PolarChart.css"
 
 interface props {
-    userId : number
+    userId : number | undefined
 }
 
 const PolarChart = ({userId} : props) => {

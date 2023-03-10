@@ -3,7 +3,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import '../styles/GraphActivity.css'
 
 interface props {
-    userId : number
+    userId : number | undefined
 }
 
 interface session {
@@ -45,9 +45,6 @@ const GraphActivity = ({userId}:props) => {
             try{
                 const response = await fetch(baseUrl)
                 const datas = await response.json()
-                /*const sessions : Array <session> = datas.data.sessions
-                const sDatas : string = JSON.stringify(sessions)*/
-                //console.log(JSON.stringify(datas.data.sessions))
                 setActivitiesDatas(datas.data.sessions)
             }
             catch(error){

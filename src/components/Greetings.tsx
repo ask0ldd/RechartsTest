@@ -1,7 +1,7 @@
 import '../styles/Greetings.css'
 
 interface props {
-    firstname : string
+    firstname : string | undefined
 }
 
 const Greetings = ({firstname}:props) => {

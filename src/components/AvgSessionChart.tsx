@@ -3,7 +3,7 @@ import { LineChart, ResponsiveContainer, Line, XAxis, YAxis, Tooltip, Legend } f
 import "../styles/AvgSessionChart.css"
 
 interface props {
-    userId : number
+    userId : number | undefined
 }
 
 const AvgSessionChart = ({userId}:props) => {
